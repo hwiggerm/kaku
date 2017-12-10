@@ -1,0 +1,8 @@
+http://84.80.49.52:85/schakel.php?lamp=4&action=0
+
+eurodomest  -3  -2  -1
+
+action  : 11 marc, 12 defect, 13 slaapkamer
+
+kaku 1 kroonluchter, 2 sere, 3 woonkamer, 4 bib, 6 vijver,7 buiten, 8 kerstboom,9 buitenverlichting
+
