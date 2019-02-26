@@ -1,4 +1,7 @@
 <?php
+  $temp = $argv[1];
+  $humidity = $argv[2];
+
   $servername = "localhost";
   $username = "name_of_the_user";
   $password = "users_password";
