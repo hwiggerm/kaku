@@ -1,29 +1,37 @@
 <?php
-  $device = $argv[];
-  $temp = $argv[2];
-  $humidity = $argv[3];
+
+
+  //   http://84.80.49.52:85/logtemp.php?device=1&temp=1.3&humidity=2.3
+
+  $device = $_GET['device'];
+  $temp = $_GET['temp'];
+  $humidity = $_GET['humidity'];
 
   $servername = "localhost";
   $username = "testuser";
   $password = "test623";
   $dbname = "testdb";
 
- // Create connection  
-  $conn = mysqli_connect($servername, $username, $password, $dbname); 
+  echo "Naam :" ;
 
- // Check connection  	
-  if (!$conn) 
-  {      
-     die("Connection went wrong: " . mysqli_connect_error());
+  try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+
+    $sql = "insert into temp_log(device,temp,humidity) VALUES ($device, $temp, $humidity)";
+
+    if ($conn->query($sql) == TRUE) {
+    echo "New record created successfully";
+    } else {
+    echo "......Error: " . $sql . "<br>" . $conn->error;
   }
 
-  $sql = "INSERT INTO temp_log (device,tstamp,temp,humidity) VALUES ($device, NOW(),$temp, $humidity)";
-  if (mysqli_query($conn, $sql))
-  {    
-     echo "Inserted successfully";
-  } 
-  else 
-  {    
-     echo "Error: ". $sql . "<br>" . mysqli_error($conn);}mysqli_close($conn);
+
+
+  } catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
   }
+
 ?>
