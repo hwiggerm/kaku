@@ -3,8 +3,6 @@
   $temp = $argv[2];
   $humidity = $argv[3];
 
-ct('localhost','testuser','test623','testdb');
-
   $servername = "localhost";
   $username = "testuser";
   $password = "test623";
