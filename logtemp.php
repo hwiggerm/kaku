@@ -1,11 +1,14 @@
 <?php
-  $temp = $argv[1];
-  $humidity = $argv[2];
+  $device = $argv[];
+  $temp = $argv[2];
+  $humidity = $argv[3];
+
+ct('localhost','testuser','test623','testdb');
 
   $servername = "localhost";
-  $username = "name_of_the_user";
-  $password = "users_password";
-  $dbname = "myDatabase";
+  $username = "testuser";
+  $password = "test623";
+  $dbname = "testdb";
 
  // Create connection  
   $conn = mysqli_connect($servername, $username, $password, $dbname); 
@@ -16,7 +19,7 @@
      die("Connection went wrong: " . mysqli_connect_error());
   }
 
-  $sql = "INSERT INTO MovieList (title, rating, price) VALUES ('random_movie', 'good', '5')";
+  $sql = "INSERT INTO temp_log (device,tstamp,temp,humidity) VALUES ($device, NOW(),$temp, $humidity)";
   if (mysqli_query($conn, $sql))
   {    
      echo "Inserted successfully";
