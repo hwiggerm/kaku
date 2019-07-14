@@ -10,14 +10,14 @@ import kaku_timer
 import sys
 
 if len(sys.argv) > 3:
-	print 'Please use one DevId as argument, followed by a 1 or 0 to set the status'
+	print ('Please use one DevId as argument, followed by a 1 or 0 to set the status')
 	exit()
 
 
 k=sys.argv[1]
-print k
 
 #if k >= 99:
 #	print 'sleep'
 #else:
 kaku_timer.switch_kaku( sys.argv[1], sys.argv[2],'B' )
+
