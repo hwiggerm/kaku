@@ -19,7 +19,7 @@ from subprocess import call
 
 #function switch_kaku
 def switch_kaku( sdevid, action, ksource ):
-    schakel = mdb.connect('localhost','kaku_user','klikaan','kaku')
+    schakel = mdb.connect('localhost','xx','xx','xx')
     slcur = schakel.cursor()
     with slcur:
         # get actual switchtime
@@ -83,7 +83,7 @@ def switch_kaku( sdevid, action, ksource ):
 
 #function read_timetable
 def read_tt():
-        con = mdb.connect('localhost','kaku_user','klikaan','kaku');
+        con = mdb.connect('localhost','xx','xx','xx');
         ttcur = con.cursor()
         with ttcur:
                 ttcur.execute("select devid, ntime, ssdelta, srdelta, saction from timetable")
