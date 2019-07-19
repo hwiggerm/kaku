@@ -2,10 +2,6 @@
 if ( isset($_POST['button']) ) {
 	shell_exec('/usr/bin/python /home/pi/kaku/klik.py  '.$_POST["button"].'');
 }
-exec("pgrep -c python", $output, $return);
-if ($return == 2 ) {
-    echo "Ok, process is running\n";
-}
 ?>
 
 <!DOCTYPE html>
@@ -46,26 +42,6 @@ if ($return == 2 ) {
 </head>
 <body>
 
-<?php
-	$con=mysqli_connect("localhost","testuser","test623","testdb");
-	// Check connection
-	if (mysqli_connect_errno())
-  	{
-  		echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  	}
-
-	$result = mysqli_query($con,"select * from  tempsensor where mdate = (select max(mdate) from tempsensor) ");
-
-	while($row = mysqli_fetch_array($result))
-  	{
-	  	echo "Tijd :" . $row['mdate'] . "Temperatuur:" . $row['temp'] . "C  " . " Vochtigheid:" . $row['humid'] . "%" . " Buitentemp:" . $row['extemp'] . "C  " ;
-  		echo "<br>";
-  	}
-
-	mysqli_close($con);
-?>
-
-
 	<!-- Primary Page Layout
 	================================================== -->
 
@@ -88,19 +64,17 @@ if ($return == 2 ) {
 			<h5>Version 0.3</h5>
 			<hr/>
 				<h3>Beneden</h3>
-				     	<legend>Woonkamer-verlichting</legend>
+				     	       <legend>Woonkamer-verlichting</legend>
 						  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 				         		<button class="button" type="submit" name="button" value="3 1" />aan</button>
 				         		<button class="button" type="submit" name="button" value="3 0" />uit</button>
 						  </form>
 
-
-						<legend>Kerstboom</legend>
+				     	       <legend>Serre</legend>
 						  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-				         		<button class="button" type="submit" name="button" value="8 1" />aan</button>
-				         		<button class="button" type="submit" name="button" value="8 0" />uit</button>
+				         		<button class="button" type="submit" name="button" value="2 1" />aan</button>
+				         		<button class="button" type="submit" name="button" value="2 0" />uit</button>
 						  </form>
-
 
 
 						<legend>Bibliotheek</legend>
@@ -109,10 +83,12 @@ if ($return == 2 ) {
 				         		<button class="button" type="submit" name="button" value="4 0" />uit</button>
 						  </form>
 
+
+
 			<hr/>
 			
 				<h3>Boven</h3>
-				     	<legend>Hal-kroonluchter</legend>
+				     	        <legend>Hal-kroonluchter</legend>
 						  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 				         	<button class="button" type="submit" name="button" value="1 1" />aan</button>
 				         	<button class="button" type="submit" name="button" value="1 0" />uit</button>
@@ -135,12 +111,6 @@ if ($return == 2 ) {
 
 			<hr/>
 				<h3>Buiten</h3>
-						
-						<legend>Vijver</legend>
-						  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-				         		<button class="button" type="submit" name="button" value="6 1" />aan</button>
-				         		<button class="button" type="submit" name="button" value="6 0" />uit</button>
-						  </form>
 						
 						<legend>Buitenlamp Garage</legend>
 						  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -171,6 +141,13 @@ if ($return == 2 ) {
 						  </form>
 
 
+						<legend>Kerstboom</legend>
+						  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+				         		<button class="button" type="submit" name="button" value="8 1" />aan</button>
+				         		<button class="button" type="submit" name="button" value="8 0" />uit</button>
+						  </form>
+
+
 						<legend>Sleep</legend>
 						  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 				         		<button class="button" type="submit" name="button" value="99 1" />uit</button>
@@ -182,11 +159,7 @@ if ($return == 2 ) {
 
 
 						<hr/>
-						<a href="db.php">DB</a> - 
-                                          <a href="weight.php">Weight </a>- 
-                                          <a href="energy.php">Energy</a>-
-                                          <a href="g.htm" target="blank">Graph</a>
- 
+
 		</div>
 		
 
